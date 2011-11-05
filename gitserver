@@ -37,6 +37,11 @@
     {
         global $home, $logdate, $logactions;
 
+        if (!$logactions)
+        {
+            return false;
+        }
+
         $logpath = $home . GIT_USER_DIR . LOG_GIT_DIR;
         $logfilename = $logpath . $logdate;
 
@@ -48,6 +53,8 @@
         $log = fopen($logfilename, 'a+');
         fputs($log, $action);
         fclose($log);
+
+        return true;
    }
 
 
@@ -114,7 +121,7 @@
 
         if (!isset($userperms[$repo]))
         {
-            git_access_log("ERROR- esse repositorio não existe na lista de repositorios para esse usuario.\n");
+            git_access_log("ERROR- this repository is not listed under this user.\n");
             return false;
         }
 
@@ -158,7 +165,7 @@
     }
     
     git_access_log('    command:' . $command['git-command'] . "\n"
-                  .'    reposit:' . $command['git-repo'] . "\n");
+                  .'    repo:' . $command['git-repo'] . "\n");
 
     $permissions = get_git_permissions();
 
