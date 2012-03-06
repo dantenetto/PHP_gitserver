@@ -1,6 +1,6 @@
 ## PHP gitserver ##
 
-## _What is it?_ ###
+### _What is it?_ ###
 This is a simple way to control access to a git repository shared among
 many users. It works using ssh and only one user at the server machine (github like)
 
