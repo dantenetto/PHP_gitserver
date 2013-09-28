@@ -71,7 +71,7 @@ if your git linux user is locked, as will be explained later, and you are creati
 1. go to `.ssh/authorized_keys` and add the user you want to grant access
     to it, like this example:
 
-        command="gitserver {USER}",no-port-forwarding,no-X11-forwarding,no-agent-forwarding ssh-[...] user@machine-desktop
+        command="gitserver {USER}",no-port-forwarding,no-X11-forwarding,no-agent-forwarding ssh-[...]
 
    the `{USER}` must be replaced by the username that will be bound to the key placed in `ssh-[...]` and will be used in the `.git_user_permission` file
 
