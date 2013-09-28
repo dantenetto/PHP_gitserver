@@ -88,7 +88,6 @@
 
         $fullpath = $home . GIT_USER_DIR . GIT_USER_FILENAME;
         
-        fwrite(STDERR, $fullpath . "\n");
         //checks if permission is not tamperable
         if (!file_exists($fullpath) 
          || !((fileperms($fullpath) & 0777) === 0600)
