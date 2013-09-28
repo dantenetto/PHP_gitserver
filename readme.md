@@ -77,12 +77,17 @@ if your git linux user is locked, as will be explained later, and you are creati
 
 1. lock the user so it's not allowed to use the password login.
     use the command:
+    
         passwd -l {gitlinuxuser}
+        
     so, it will not allow a user to login using ssh without has a key listed in the authorized_keys
 
 1. to clone the repository in another machine run the command:
+
         git clone ssh://{gitlinuxuser}@{machine-dns-or-ip}/~/myrepo
+        
     or if you need to specify the port:
+    
         git clone ssh://{gitlinuxuser}@{machine-dns-or-ip}:{port-number}/~/myrepo
     
 
