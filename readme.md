@@ -57,7 +57,7 @@ if your git linux user is locked, as will be explained later, and you are creati
         cp gitserver /usr/local/bin/gitserver
         chmod 0755 /usr/local/bin/gitserver
 
-1. configure a git user if you haven't done already.
+1. create a git user if you haven't done already.
 
         useradd {gitlinuxuser}
         
