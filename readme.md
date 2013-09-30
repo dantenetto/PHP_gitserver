@@ -47,8 +47,11 @@ if your git linux user is locked, as will be explained later, and you are creati
     
 ### Install ###
 1. check if the php is installed in the machine running:
-        php -v
-    if it isn't installed, run:
+
+            php -v
+
+    if it isn't installed, run:]
+
             [rpm] yum install php
             [deb] apt-get install php
 
