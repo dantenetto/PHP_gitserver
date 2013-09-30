@@ -27,7 +27,7 @@ which will be created if the log is enabled. it is activated by default, but can
 
 
 ### How to use ###
-the repository are named with the same name of the root folder.
+the repository is named with the same name of the root folder.
 e.g.:
 `~/myrepo`
 means that to give access to some user in the `.git_user_permission`
@@ -49,8 +49,8 @@ if your git linux user is locked, as will be explained later, and you are creati
 1. check if the php is installed in the machine running:
         php -v
     if it isn't installed, run:
-        [rpm] yum install php
-        [deb] apt-get install php
+            [rpm] yum install php
+            [deb] apt-get install php
 
 1. copy the gitserver file to /usr/local/bin and make it executable
 
