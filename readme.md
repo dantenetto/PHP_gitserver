@@ -50,7 +50,7 @@ if your git linux user is locked, as will be explained later, and you are creati
 
             php -v
 
-    if it isn't installed, run:]
+    if it isn't installed, run:
 
             [rpm] yum install php
             [deb] apt-get install php
