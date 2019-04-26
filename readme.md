@@ -6,9 +6,10 @@ many users. It works using ssh and a single user at the server machine (github l
 
 
 ### Definitions ###
-A file for permission configuration must be created with `0600` mode. And must be placed at:
+A file for permission configuration must be created with `0600` mode, and must be placed at:
 `~/.git_control/git_user_permission`
-Its syntax is a valid json, like the example:
+
+Its syntax is a valid json, like the following example:
     
     {
         "user": {
@@ -21,9 +22,10 @@ Its syntax is a valid json, like the example:
         }
     }
 
-A log folder will have the path:
+A log folder will be created at:
 `~/.git_control/log`
-and will be created if the log is enabled. It's activate by default, but can be disabled in the gitserver file.
+
+Logs are active by default, but they can be disabled in the gitserver file.
 
 
 ### How to use ###
