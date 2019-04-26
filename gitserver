@@ -21,8 +21,8 @@
 
     $error_msg = array(
         'params' =>  "\nThis login key is not associated to any user.\n",
-        'command' => "\nYou do not have powers here. Only the strongs.\n",
-        'permfile' => "\nThe permission file does not exists or its mode is unsafe.\n",
+        'command' => "\nYou do not have power here. Only the strong ones shall have.\n",
+        'permfile' => "\nThe permission file does not exist or its mode is unsafe.\n",
         'noperm' => "\nYou shall not pass!\n",
     );
 
