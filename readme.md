@@ -1,14 +1,14 @@
 ## PHP gitserver ##
 
 ### What is it? ###
-This is a simple way to control access to a git repository shared among
-many users. It works using ssh and only one user at the server machine (github like)
+This is a simple script to control the access to a git repository shared among
+many users. It works using ssh and a single user at the server machine (github like)
 
 
 ### Definitions ###
-a file for permission must be create with `0600` mode. must be placed at
+A file for permission configuration must be created with `0600` mode. And must be placed at:
 `~/.git_control/git_user_permission`
-the syntax is a valid json like the example:
+Its syntax is a valid json, like the example:
     
     {
         "user": {
@@ -21,77 +21,79 @@ the syntax is a valid json like the example:
         }
     }
 
-there is a log folder placed at:
+A log folder will have the path:
 `~/.git_control/log`
-which will be created if the log is enabled. it is activated by default, but can be deactivated in the gitserver file.
+and will be created if the log is enabled. It's activate by default, but can be disabled in the gitserver file.
 
 
 ### How to use ###
-the repository is named with the same name of the root folder.
+The repository should be named with the same name of its root directory.
 e.g.:
 `~/myrepo`
-means that to give access to some user in the `.git_user_permission`
+means that to give access to some user in `.git_user_permission`,
 the repo key must be "myrepo".
 
-it works using the ssh `authorized_keys` to invoke the command.
+It works by using the ssh `authorized_keys` to invoke the command.
 
-to create the repository as a server repository you will need to run the command init with --bare option.
+To create the repository as a "server" repository (without a working branch) you'll need to run the command init with `--bare` option.
 e.g.:
 
     git init --bare ~/myrepo
     
-if your git linux user is locked, as will be explained later, and you are creating the repo using a root user, will be necessary to set the git user as owner of the files:
+If your linux user is locked, as will be explained later, and you're creating the repository using a root user, it'll be necessary to set the git user as owner of the files:
 
     chown -hR {gitlinuxuser}:{gitlinuxgroup} /home/{gitlinuxuser}/myrepo
     
     
 ### Install ###
-1. check if the php is installed in the machine running:
+1. Check if php is installed by running:
 
             php -v
 
-    if it isn't installed, run:
+    if it isn't, run:
 
             [rpm] yum install php
             [deb] apt-get install php
+            [mac] brew install php
 
-1. copy the gitserver file to /usr/local/bin and make it executable
+1. Copy the gitserver file to `/usr/local/bin` and make it executable
 
         cp gitserver /usr/local/bin/gitserver
         chmod 0755 /usr/local/bin/gitserver
 
-1. create a git user if you haven't done already.
+1. Create a linux user, if you haven't done it already
 
         useradd {gitlinuxuser}
         
-1. create a directory `.git_control` under the home of the git linux user. (this path can be configured in the gitserver file)
+1. Create a directory `.git_control` under the home direcotry of the git linux user. (You can configure this path in the gitserver file)
 
-1. create a file named `git_user_permission` under the `.git_control`
-    folder and change its mode to `0600`.
+1. Create a file named `git_user_permission` under the previously created `.git_control`
+    directory and change its mode to `0600`.
 
         chmod 0600 git_user_permission
 
-1. go to `.ssh/authorized_keys` and add the user you want to grant access
-    to it, like this example:
+1. Open `.ssh/authorized_keys` and add the user you want to grant access
+    to, by adding a command line, like so:
 
         command="gitserver {USER}",no-port-forwarding,no-X11-forwarding,no-agent-forwarding ssh-[...]
 
-   the `{USER}` must be replaced by the username that will be bound to the key placed in `ssh-[...]` and will be used in the `.git_user_permission` file
+   The `{USER}` must be replaced by the username that will be bound to the key placed in `ssh-[...]`, and should match the username being used inside `.git_user_permission`
 
-1. lock the user so it's not allowed to use the password login.
-    use the command:
+1. Lock the linux user to disable password logins,
+    by using the command:
     
         passwd -l {gitlinuxuser}
         
-    so, it will not allow a user to login using ssh without has a key listed in the authorized_keys
+    so the system won't allow a user to login using ssh without habing a key listed in `authorized_keys`
 
-1. to clone the repository in another machine run the command:
+### Access ###
+1. To clone the repository in another machine run the command:
 
         git clone ssh://{gitlinuxuser}@{machine-dns-or-ip}/~/myrepo
         
-    or if you need to specify the port:
+    or if port is required:
     
         git clone ssh://{gitlinuxuser}@{machine-dns-or-ip}:{port-number}/~/myrepo
     
 
-any doubt, mail me.
+Any doubt, mail me.
